@@ -1,0 +1,21 @@
+# Contributor: Cilyan Olowen <gaknar@gmail.com>
+pkgname=sugar-activity-imageviewer
+pkgver=59
+pkgrel=1
+_realname=ImageViewer
+pkgdesc="An image viewer for Sugar."
+arch=('i686' 'x86_64')
+url="http://www.sugarlabs.org/"
+license=('GPL')
+groups=('sucrose' 'fructose')
+depends=('sugar')
+source=(http://download.sugarlabs.org/sources/sucrose/fructose/${_realname}/${_realname}-$pkgver.tar.bz2)
+sha256sums=('637f3090883ef1f7fb0d7883af8d114f6f3c7874660c0eba6007df7f40123eee')
+
+package() {
+  cd "$srcdir/${_realname}-$pkgver"
+
+  python2 setup.py install --prefix="$pkgdir/usr" || return 1
+}
+
+# vim:set ts=2 sw=2 et:

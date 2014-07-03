@@ -1,0 +1,21 @@
+# Contributor: Cilyan Olowen <gaknar@gmail.com>
+pkgname=sugar-activity-chat
+pkgver=79
+pkgrel=1
+_realname=Chat
+pkgdesc="A chat client for Sugar."
+arch=('i686' 'x86_64')
+url="http://www.sugarlabs.org/"
+license=('GPL')
+groups=('sucrose' 'fructose')
+depends=('sugar')
+source=(http://download.sugarlabs.org/sources/sucrose/fructose/${_realname}/${_realname}-$pkgver.tar.bz2)
+sha256sums=('5b2cbc861473dd6aec6b352d6da6b4c71422fef20bfc2b3016379210ad0aba31')
+
+package() {
+  cd "$srcdir/${_realname}-$pkgver"
+
+  python2 setup.py install --prefix="$pkgdir/usr" || return 1
+}
+
+# vim:set ts=2 sw=2 et:

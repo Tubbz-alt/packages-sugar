@@ -9,3 +9,14 @@ sugar-toolkit-gtk3
 python2-gwebsockets
 sugar
 sugar-runner
+etoys
+sugar-activity-browse
+sugar-activity-calculate
+sugar-activity-chat
+sugar-activity-clock
+sugar-activity-imageviewer
+sugar-activity-log
+sugar-activity-jukebox
+sugar-activity-pippy
+sugar-activity-read
+sugar-activity-terminal

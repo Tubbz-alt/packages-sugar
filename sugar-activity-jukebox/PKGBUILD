@@ -1,0 +1,21 @@
+# Contributor: Cilyan Olowen <gaknar@gmail.com>
+pkgname=sugar-activity-jukebox
+pkgver=32
+pkgrel=1
+_realname=Jukebox
+pkgdesc="Sugar music player."
+arch=('any')
+url="http://www.sugarlabs.org/"
+license=('GPL')
+groups=('sucrose' 'fructose')
+depends=('sugar')
+source=(http://download.sugarlabs.org/sources/sucrose/fructose/${_realname}/${_realname}-$pkgver.tar.bz2)
+sha256sums=('6bb493b40195cbea20750bd391d1d88f3bdb3689bb0d0019b1c83406168004e3')
+
+package() {
+  cd "$srcdir/${_realname}-$pkgver"
+
+  python2 setup.py install --prefix="$pkgdir/usr" || return 1
+}
+
+# vim:set ts=2 sw=2 et:

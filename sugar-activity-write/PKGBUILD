@@ -1,0 +1,22 @@
+# Maintainer: Philip Müller <philm[at]manjaro[dog]org>
+# Contributor: Cilyan Olowen <gaknar@gmail.com>
+pkgname=sugar-activity-write
+pkgver=94
+pkgrel=1
+_realname=Write
+pkgdesc="Sugar text processor"
+arch=('any')
+url="http://www.sugarlabs.org/"
+license=('GPL')
+groups=('sucrose' 'fructose')
+depends=('sugar')
+source=(http://download.sugarlabs.org/sources/sucrose/fructose/${_realname}/${_realname}-$pkgver.tar.bz2)
+sha256sums=('54e78580cd2a4008041e6717329931d7a0ca6418802dad423488b69e853eb5b9')
+
+package() {
+  cd "$srcdir/${_realname}-$pkgver"
+
+  python2 setup.py install --prefix="$pkgdir/usr" || return 1
+}
+
+# vim:set ts=2 sw=2 et:

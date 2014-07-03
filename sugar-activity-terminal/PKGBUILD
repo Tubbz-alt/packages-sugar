@@ -1,0 +1,22 @@
+# Maintainer: Philip Müller <philm[at]manjaro[dog]org>
+# Contributor: Cilyan Olowen <gaknar@gmail.com>
+pkgname=sugar-activity-terminal
+pkgver=42
+pkgrel=1
+_realname=Terminal
+pkgdesc="A terminal emulator for Sugar"
+arch=('any')
+url="http://www.sugarlabs.org/"
+license=('GPL')
+groups=('sucrose' 'fructose')
+depends=('sugar')
+source=(http://download.sugarlabs.org/sources/sucrose/fructose/${_realname}/${_realname}-$pkgver.tar.bz2)
+sha256sums=('ea38a75013d3e51a001e4a5881824ddc1d6efabc299310741df8848a95722936')
+
+package() {
+  cd "$srcdir/${_realname}-$pkgver"
+
+  python2 setup.py install --prefix="$pkgdir/usr" || return 1
+}
+
+# vim:set ts=2 sw=2 et:

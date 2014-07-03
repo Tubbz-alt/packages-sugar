@@ -1,0 +1,23 @@
+# Maintainer: Philip Müller <philm[at]manjaro[dog]org>
+# Contributor: Cilyan Olowen <gaknar@gmail.com>
+
+pkgname=sugar-activity-clock
+pkgver=1
+pkgrel=1
+_realname=Clock
+pkgdesc="A Clock for Sugar."
+arch=('any')
+url="http://www.sugarlabs.org/"
+license=('GPL')
+groups=('sucrose' 'fructose')
+depends=('sugar')
+source=(http://download.sugarlabs.org/sources/sucrose/fructose/${_realname}/${_realname}-$pkgver.tar.bz2)
+sha256sums=('d5ae19bc45343a164533482fce04912a54c3192f57eaaa7ac25298b07fcceda7')
+
+package() {
+  cd "$srcdir/${_realname}-$pkgver"
+
+  python2 setup.py install --prefix="$pkgdir/usr" || return 1
+}
+
+# vim:set ts=2 sw=2 et:

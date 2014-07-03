@@ -1,0 +1,23 @@
+# Maintainer: Philip Müller <philm[at]manjaro[dog]org>
+# Contributor: Cilyan Olowen <gaknar@gmail.com>
+
+pkgname=sugar-activity-calculate
+pkgver=42
+pkgrel=1
+_realname=Calculate
+pkgdesc="A calculator for Sugar."
+arch=('any')
+url="http://www.sugarlabs.org/"
+license=('GPL')
+groups=('sucrose' 'fructose')
+depends=('sugar')
+source=(http://download.sugarlabs.org/sources/sucrose/fructose/${_realname}/${_realname}-$pkgver.tar.bz2)
+sha256sums=('186962a67dd31a11fe66e8cf4ebc36b31885331129ab8f22bbeb96db9ec7db58')
+
+package() {
+  cd "$srcdir/${_realname}-$pkgver"
+
+  python2 setup.py install --prefix="$pkgdir/usr" || return 1
+}
+
+# vim:set ts=2 sw=2 et:
