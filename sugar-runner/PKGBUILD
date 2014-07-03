@@ -1,0 +1,33 @@
+# Maintainer: Christophe Gueret <christophe.gueret@gmail.com>
+
+pkgname=sugar-runner
+pkgver=0.102.0
+pkgrel=1
+pkgdesc="Set of scripts to run sugar"
+arch=('i686' 'x86_64')
+url="http://www.sugarlabs.org/"
+license=('GPL')
+groups=('sugar-desktop' 'glucose')
+depends=('python2' 'sugar-datastore' 'sugar-presence-service' 'sugar' 'xorg-xinit')
+makedepends=('intltool>=0.33' 'gcc' 'perl>=5.8.1')
+source=(http://download.sugarlabs.org/sources/sucrose/glucose/${pkgname}/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('6e5ce354e0da181bd144f614671772df7a685441d92ee188f5bb440df81f3042')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  PYTHON=python2 ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+
+  # python2 fix (taken from pyrss PKGBUILD, modified a bit)
+  for file in $(find ${pkgdir}/usr/bin -name 'sugar*'); do
+        sed -i 's_^python_python2_' $file
+        sed -i 's_^#!/usr/bin/env python_#!/usr/bin/env python2_' $file
+  done
+}
+
+

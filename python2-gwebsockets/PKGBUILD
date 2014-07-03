@@ -1,0 +1,23 @@
+# Maintainer: Daniel Narvaez <dwnarvaez@gmail.com> 
+
+pkgname=python2-gwebsockets
+_pkgname=gwebsockets
+pkgver=0.4
+pkgrel=1
+pkgdesc="A python websocket server using GLib"
+arch=('i686' 'x86_64')
+url="https://github.com/dnarvaez/gwebsockets"
+license=('GPL')
+depends=('python2' 'glib2' 'python2-setuptools')
+source=("$pkgname-$pkgver.tar.gz"::'https://github.com/dnarvaez/gwebsockets/archive/v$pkgver.tar.gz')
+sha256sums=('001d42a7d3adf2613f29e072a6488048c93800af3e3288df1c24e3e69da7e7e9')
+
+build() {
+  cd ${srcdir}/${_pkgname}-${pkgver}
+  python2 ./setup.py build
+}
+
+package() {
+  cd ${srcdir}/${_pkgname}-${pkgver}
+  python2 ./setup.py install --root=${pkgdir}
+}
