@@ -14,6 +14,7 @@ makedepends=('gcc' 'perl>=5.8.1')
 optdepends=('xorg-server-xephyr: Needed for sugar-emulator')
 source=(http://download.sugarlabs.org/sources/sucrose/glucose/${pkgname}/${pkgname}-${pkgver}.tar.xz)
 sha256sums=('fda576fea51d0693fb9addd0cd123da95750d8c852accf982cd06956e511a75f')
+install=sugar.install
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
